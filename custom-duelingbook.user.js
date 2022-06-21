@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Custom DB Testing
+// @name         Custom DB
 // @description  Adds options to customize DB and make it more streamer friendly
 // @version      1.1.26
 // @author       Killburne
