@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Custom DB
+// @name         Custom DB Testing
 // @description  Adds options to customize DB and make it more streamer friendly
 // @version      1.1.26
-// @author       Killburne
+// @author       Killburne & Time2Clown
 // @license		 MIT
 // @namespace    https://www.yugioh-api.com/
 // @homepageURL  https://github.com/killburne/custom-duelingbook/
@@ -613,6 +613,11 @@
                         await activateSpellTrapFromDeck(cmd.param);
                     }
                     break;
+                case 'banishFromField':
+                    if (cmd.param) {
+                        await banishCardsFromField(cmd.param);
+                    }
+                    break;
                 case 'activateSpellTrapFromDeckToZone':
                     if (cmd.param) {
                         const params = splitArguments(cmd.param);
@@ -978,6 +983,16 @@
 
     async function removeCounterFromCards(cardArr, name) {
         await doActionsOnMultipleCardNames(cardArr, name, async (card) => removeCounterFromCard(card));
+    }
+
+    async function banishCardsFromField(name) {
+        const cardsOnField = getOwnControlledMonsters().concat(getOwnSpellsAndTrapsOnField());
+
+        const card = findCardByName(cardsOnField, name);
+        if (!card){
+            return;
+        }
+        await banishCards(cardsOnField, name);
     }
 
     async function banishCardsFromGY(name) {
