@@ -2,7 +2,7 @@
 // @name         Custom DB Testing
 // @description  Adds options to customize DB and make it more streamer friendly
 // @version      1.1.26
-// @author       Killburne & Time2Clown
+// @author       Killburne
 // @license		 MIT
 // @namespace    https://www.yugioh-api.com/
 // @homepageURL  https://github.com/killburne/custom-duelingbook/
