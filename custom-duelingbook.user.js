@@ -985,14 +985,18 @@
         await doActionsOnMultipleCardNames(cardArr, name, async (card) => removeCounterFromCard(card));
     }
 
-    async function banishCardsFromField(name) {
+    async function banishCardsFromField(name, faceDown) {
         const cardsOnField = getOwnControlledMonsters().concat(getOwnSpellsAndTrapsOnField());
 
         const card = findCardByName(cardsOnField, name);
         if (!card){
             return;
         }
-        await banishCards(cardsOnField, name);
+        if (faceDown) {
+            await banishCardsFaceDown(cardsOnField, name);
+        } else {
+            await banishCards(cardsOnField, name);
+        }
     }
 
     async function banishCardsFromGY(name) {
